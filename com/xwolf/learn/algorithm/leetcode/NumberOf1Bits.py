@@ -20,14 +20,19 @@ In Java, the compiler represents the signed integers using 2's complement notati
 
 Follow up:
 If this function is called many times, how would you optimize it?
+
 """
+
+
 class Solution(object):
+
     def hammingWeight(self, n):
         """
         :type n: int
         :rtype: int
         """
         return len(bin(n).replace('0b', '').replace('0', ''))
+
 
 if __name__ == '__main__':
 
