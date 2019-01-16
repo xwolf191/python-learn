@@ -21,6 +21,8 @@ In Java, the compiler represents the signed integers using 2's complement notati
 Follow up:
 If this function is called many times, how would you optimize it?
 
+@author xwolf
+@status accept
 """
 
 
