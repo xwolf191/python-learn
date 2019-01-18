@@ -1,11 +1,6 @@
 
 """
 842. Split Array into Fibonacci Sequence
-Medium
-186
-57
-Favorite
-Share
 Given a string S of digits, such as S = "123456579", we can split it into a Fibonacci-like sequence [123, 456, 579].
 Formally, a Fibonacci-like sequence is a list F of non-negative integers such that:
 0 <= F[i] <= 2^31 - 1, (that is, each integer fits a 32-bit signed integer type);
@@ -36,7 +31,7 @@ Note:
 S contains only digits.
 
 @author xwolf
-@status accept
+@status
 """
 
 
@@ -45,6 +40,15 @@ class SplitArrayIntoFibonacciSequence:
     def __init__(self):
         pass
 
+    def sum(self, a, b):
+        """
+        字符串求和
+        :param a:
+        :param b:
+        :return:
+        """
+        return int(a) + int(b)
+
     def splitIntoFibonacci(self, S):
         """
         :type S: str
@@ -52,5 +56,12 @@ class SplitArrayIntoFibonacciSequence:
         """
         if S[0] == '0':
             return []
+        return S
 
+
+if __name__ == '__main__':
+    sp = SplitArrayIntoFibonacciSequence()
+    S = "012324"
+    print(sp.splitIntoFibonacci(S))
+    print(sp.sum("324","3234"))
 
