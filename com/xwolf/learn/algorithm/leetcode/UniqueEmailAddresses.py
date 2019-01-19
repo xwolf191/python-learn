@@ -33,13 +33,14 @@ class UniqueEmailAddress:
             strs = i.split("@")
             local = strs[0]
             domain = strs[1]
-            newLocal = local.replace(".","").split("+")[0]
+            newLocal = local.replace(".", "").split("+")[0]
             email = newLocal+'@'+domain
             if email not in result:
                 result.append(email)
         return len(result)
 
-if  __name__ == '__main__':
+
+if __name__ == '__main__':
     un = UniqueEmailAddress()
     emails = ["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com","testemail+david@lee.tcode.com"]
     print(un.numUniqueEmails(emails))
