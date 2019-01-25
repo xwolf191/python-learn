@@ -26,6 +26,7 @@ class ThreeSum:
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        nums = sorted(nums)
         res = []
         for i, n in enumerate(nums):
             print(i, n)
@@ -36,7 +37,7 @@ class ThreeSum:
 if __name__ == '__main__':
 
     th = ThreeSum()
-    nums = [1, 2, -2, -1]
+    nums = [1, 2, -2, -1, 0]
     th.threeSum(nums)
 
 
