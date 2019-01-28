@@ -17,6 +17,8 @@ Output: false
 @author xwolf
 @status accept
 """
+
+
 class PowerOfThree:
 
     def __init__(self):
