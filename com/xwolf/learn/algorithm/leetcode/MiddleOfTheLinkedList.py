@@ -18,8 +18,9 @@ The number of nodes in the given list will be between 1 and 100.
 @author xwolf
 @status accept
 """
-
 import math
+
+
 class MiddleOfTheLinkedList:
 
     def __init__(self):
