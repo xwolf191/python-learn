@@ -65,7 +65,6 @@ class ValidNumber:
             if cur not in number and cur not in chars:
                 return False
             if cur in chars and i < size-1:
-            if s[i] in chars and i < size-1:
                 # 字符不能出现多次
                 if s[i] in existChar or s[i+1] in existChar:
                     return False
