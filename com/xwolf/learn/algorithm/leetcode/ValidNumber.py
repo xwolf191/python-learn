@@ -28,7 +28,7 @@ The signature of the C++ function had been updated. If you still see your functi
 
 @author xwolf
 @tag match
-@result
+@result accept
 """
 
 
@@ -56,18 +56,36 @@ class ValidNumber:
             return False
         existChar = []
         for i in range(size):
-            if s[i] not in number and s[i] not in chars:
+            cur = s[i]
+            print(cur, existChar)
+            # 字符不能出现多次
+            if cur in existChar:
                 return False
+            # 只能数字和指定字符
+            if cur not in number and cur not in chars:
+                return False
+            if cur in chars and i < size-1:
             if s[i] in chars and i < size-1:
                 # 字符不能出现多次
                 if s[i] in existChar or s[i+1] in existChar:
                     return False
                 existChar.append(s[i])
                 nextChar = s[i+1]
-                if s[i] != 'e' and nextChar in chars:
-                    return False
-                if s[i] == 'e':
+                if s[0] != '+' and s[0] != '-':
+                    existChar.append(cur)
+                if cur != 'e' and nextChar in chars:
+                    if cur == '.' and nextChar != 'e':
+                        return False
+                    if i == 0 and cur == '.' and nextChar == 'e':
+                        return False
+                    if cur != '.' and nextChar == 'e':
+                        return False
+                if cur == 'e':
                     if nextChar != '+' and nextChar != '-' and nextChar not in number:
+                        return False
+                # +,- 不能出现在字符串中间,但是e后边可以是+,-
+                if cur == '+' or cur == "-":
+                    if i > 0 and s[i-1] != 'e':
                         return False
                 if s[i] == '+' or s[i] == '-':
                     if i != 0 and s[i-1] is not None and s[i+1] is not None:
@@ -75,17 +93,24 @@ class ValidNumber:
         # 判断e后字符是否合法
         if 'e' in s:
             estr = s.split("e")
-            if len(estr) > 2:
-                return False
             etr = estr[1]
             for j in range(len(etr)):
-                if etr[j] not in number:
+                er = etr[j]
+                print(er)
+                if j == 0 and er not in number and er != '+' and er != '-':
                     return False
-        return True
+                if j != 0 and er not in number:
+                    return False
+        # 如果字符串是否含任何数字
+        res = False
+        for i in range(size):
+            if s[i] in number:
+                res = True
+        return res
 
 
 if __name__ == '__main__':
     vn = ValidNumber()
-    sr = ".3."
+    sr = "+42e+76125"
     print(vn.isNumber(sr))
     print("-4-".split("-"))
