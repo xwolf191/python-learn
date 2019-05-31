@@ -43,7 +43,6 @@ class ValidNumber:
         size = len(s)
         if s is None or size == 0:
             return False
-
         number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
         chars = ['+', '-', '.', 'e']
         # 只有一个字符判断是否为数字
@@ -55,21 +54,24 @@ class ValidNumber:
         # 第一个字符不能为e
         if s[0] == 'e':
             return False
+        existChar = []
         for i in range(size):
             if s[i] not in number and s[i] not in chars:
                 return False
             if s[i] in chars and i < size-1:
+                # 字符不能出现多次
+                if s[i] in existChar or s[i+1] in existChar:
+                    return False
+                existChar.append(s[i])
                 nextChar = s[i+1]
                 if s[i] != 'e' and nextChar in chars:
                     return False
                 if s[i] == 'e':
                     if nextChar != '+' and nextChar != '-' and nextChar not in number:
                         return False
-        # 判断是否有多个.
-        if '.' in s:
-            pstr = s.split(".")
-            if len(pstr) > 2:
-                return False
+                if s[i] == '+' or s[i] == '-':
+                    if i != 0 and s[i-1] is not None and s[i+1] is not None:
+                        return False
         # 判断e后字符是否合法
         if 'e' in s:
             estr = s.split("e")
@@ -86,3 +88,4 @@ if __name__ == '__main__':
     vn = ValidNumber()
     sr = ".3."
     print(vn.isNumber(sr))
+    print("-4-".split("-"))
