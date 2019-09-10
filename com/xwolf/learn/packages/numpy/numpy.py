@@ -80,7 +80,14 @@ class Numpy:
         # 修改指定位置的元素
         a[0][2] = -5
         print("修改后元素数组元素", a)
-        print("索引切片", a[1:2:1])
+        # 沿指定轴获取最大值元素
+        maxElement = a.max(0)
+        print("最大值maxElement=", maxElement)
+        # 和上边的方法等价
+        elementMax = np.amax(a, 0)
+        print("a=", elementMax)
+        # 此处有amin方法获取最小元素数组,和amax一样不做演示了
+        # 切片
 
     def trigonometricFunction(self):
         """
