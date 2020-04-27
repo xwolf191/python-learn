@@ -1,8 +1,4 @@
-# coding:utf8
 
-"""
-matplotlib 练手示例
-"""
 from matplotlib import pyplot as plt
 from matplotlib.font_manager import FontProperties
 
